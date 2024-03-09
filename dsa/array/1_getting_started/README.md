@@ -1,0 +1,1 @@
+[Getting Started with Arrays](https://www.notion.so/matthengo/8e739574c0bb4b63b1d8e0d04f2cf0bb?pvs=4#1cdc25a8737f44e283ca763e627f3017)
