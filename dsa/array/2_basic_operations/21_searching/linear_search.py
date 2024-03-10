@@ -2,6 +2,13 @@ def linear_search(arr, target):
     """
     Tìm kiếm tuần tự trong một mảng
     
+    Complexities:
+    - Time complexity:
+        => Worst case: O(n)
+        => Best case: O(1)
+        => Average case: O(n)
+    - Space complexity: O(1) => không có sự tăng thêm về không gian khi kích thước input arr tăng lên
+    
     Parameters:
         arr (list): Input array
         target: Phần tử cần tìm kiếm

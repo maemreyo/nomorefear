@@ -13,6 +13,13 @@ def sentinel_linear_search(arr, target):
     Notes:
     - Mặc dù trong worst case, độ phức tạp về thời gian của Linear Search và Sentinel Linear Search đều là O(n), nhưng SLS vẫn có ít số phép so sánh hơn.
     
+    Complexities:
+    - Time complexity:
+        => Worst case: O(n)
+        => Best case: O(1)
+        => Average case: O(n)
+    - Space complexity: O(1) => không có sự tăng thêm về không gian khi kích thước input arr tăng lên
+    
     Args:
         arr (list): mảng đầu vào
         target: phần tử cần tìm kiếm
