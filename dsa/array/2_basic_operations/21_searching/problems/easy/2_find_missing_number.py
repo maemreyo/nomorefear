@@ -28,12 +28,14 @@
             -> If we found the element (has index a) in the range [0, len(arr) - 1] => return base_range[a]
             -> If we didnt find => return the last element of base_range
         
-        =>> Approach 3 (Using Hashing): 
+        =>> Approach 3 (Using Hashing): `O(3n) => O(n)`
         - Create a base array of size n+1 with all initial values as 0
         - Traverse the input array, and do following for each element
             -> if(base_array[arr[i]] == 0) base_array[arr[i]] = 1
         - Traverse base_array[] and output the array element having value 0 -> This is the missing element
         
+        =>> Approach 4 (Using binary operations)
+        =>> Approach 5 (Use elements as Index and mark the visited places as negative)
 
 ====================================================================================================================================================================
 """
@@ -76,12 +78,12 @@ def find_missing_number_approach_2(arr: list):
 # * Approach 3 (Using Hashing)
 def find_missing_number_approach_3(arr: list):
     # Create a base array
-    base_array = [0 for _ in range(len(arr) + 1)]
+    base_array = [0 for _ in range(len(arr) + 1)] # n
     
-    for i in range(0, len(arr)):
+    for i in range(0, len(arr)): # n
         base_array[arr[i] - 1] = 1
     
-    for i in range(0, len(arr) + 1):
+    for i in range(0, len(arr) + 1): # n
         if base_array[i] == 0:
             ans = i + 1
     
