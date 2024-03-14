@@ -9,7 +9,7 @@
     🗳️ Example:
             Input: arr[] = {3, 1, 3}
             Output: Missing = 2, Repeating = 3
-            Explanation: In the array, 2 is missing and 3 occurs twice 
+            Explanation: In the array, 2 is missing and 3 occurs twice
 
             Input: arr[] = {4, 3, 6, 2, 1, 1}
             Output: Missing = 5, Repeating = 1
@@ -88,36 +88,36 @@ def find_missing_repeating_2(arr: list) -> Optional[tuple[int, int]]:
     if not arr:
         print("Error: Input array is empty")
         return None
-    
+
     # Initialize the unique array that contains unique items
     unique_arr = set()
-    
+
     # Initialize the repeating variable
     repeating = None
-    
+
     # Loop through the input array
     for item in arr: # n
         if item in unique_arr:
             repeating = item
             break
-        
+
         unique_arr.add(item)
-    
+
     # We will take advantage of the previous iteration to know what the input array contains
     # Initialize the variable Y to store the missing variable
     missing = None
-    
+
     # Loop through the base array and find the missing item
     for item in range(1, len(arr) + 1): # n
         if item not in unique_arr:
             missing = item
             break
-    
+
     # Check if missing or repeating elements were found
     if missing is None or repeating is None:
         print("Error: Missing or repeating element not found")
         return None
-    
+
     return missing, repeating
 
 #! ====================================================================================================================================================================
