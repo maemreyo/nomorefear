@@ -23,7 +23,7 @@
         - If arr[i] == 0 => The missing one
         - If arr[i] == 2 => The repeating one
 
-        ==============================================================================================================
+        ! ==============================================================================================================
         =>> Approach 2: Using a set - `O(2n) -> O(n)`
         - Create a new set
         - Initialize a variable X to store the repeating variable
