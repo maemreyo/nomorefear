@@ -79,7 +79,7 @@ def find_missing_repeating_1(arr: list) -> Optional[tuple[Optional[int], Optiona
 
 
 #! ====================================================================================================================================================================
-def find_missing_repeating_2(arr: list) -> Optional[tuple[int, int]]:
+def find_missing_repeating_2(arr: list) -> Optional[tuple[Optional[int], Optional[int]]]:
     # Check if the input array is empty
     if not arr:
         print("Error: Input array is empty")
@@ -95,7 +95,11 @@ def find_missing_repeating_2(arr: list) -> Optional[tuple[int, int]]:
     for item in arr:  # n
         if item in unique_arr:
             repeating = item
-            break
+            # !!! We should not break the loop here, because if we still have other items in the `arr`, this will break the logic to find the missing element below
+            # ! Found the bug when testing this test case:
+                # *     def test_single_repeating_element_2(self):
+                # *         self.assertEqual(find_missing_repeating_2([1, 2, 3, 2, 4]), (5, 2))
+            # break
 
         unique_arr.add(item)
 
@@ -109,19 +113,14 @@ def find_missing_repeating_2(arr: list) -> Optional[tuple[int, int]]:
             missing = item
             break
 
-    # Check if missing or repeating elements were found
-    if missing is None or repeating is None:
-        print("Error: Missing or repeating element not found")
-        return None
-
     return missing, repeating
 
 
 #! ====================================================================================================================================================================
 
 # Example
-arr = [1, 2, 3, 4, 5]
-result = find_missing_repeating_1(arr)
+arr = [1, 2, 3, 2, 4]
+result = find_missing_repeating_2(arr)
 
 if result:
     print(result)
