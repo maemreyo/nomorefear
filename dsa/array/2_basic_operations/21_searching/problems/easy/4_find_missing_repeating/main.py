@@ -42,17 +42,17 @@
 from typing import Optional
 
 
-def find_missing_repeating_1(arr: list) -> Optional[tuple[int, int]]:
+def find_missing_repeating_1(arr: list) -> Optional[tuple[Optional[int], Optional[int]]]:
     # Check if the input array is empty
     if not arr:
         print("Error: Input array is empty")
         return None
 
     # Create a new array that contains full of 0 and have the length n
-    base_arr = [0] * (len(arr)) # n
+    base_arr = [0] * (len(arr) + 1)  # n
 
     # Loop through the input array to count
-    for i in arr: # n
+    for i in arr:  # n
         if base_arr[i - 1] == 0:
             base_arr[i - 1] += 1
             continue
@@ -65,22 +65,18 @@ def find_missing_repeating_1(arr: list) -> Optional[tuple[int, int]]:
     repeating = None
 
     # Filter the missing and repeating ones
-    for idx, i in enumerate(base_arr): # n
+    for idx, i in enumerate(base_arr):  # n
         if i == 0:
             missing = idx + 1
             break
 
-    for idx, i in enumerate(base_arr): # n
+    for idx, i in enumerate(base_arr):  # n
         if i == 2:
             repeating = idx + 1
             break
 
-    # Check if missing or repeating elements were found
-    if missing is None or repeating is None:
-        print("Error: Missing or repeating element not found")
-        return None
-
     return missing, repeating
+
 
 #! ====================================================================================================================================================================
 def find_missing_repeating_2(arr: list) -> Optional[tuple[int, int]]:
@@ -96,7 +92,7 @@ def find_missing_repeating_2(arr: list) -> Optional[tuple[int, int]]:
     repeating = None
 
     # Loop through the input array
-    for item in arr: # n
+    for item in arr:  # n
         if item in unique_arr:
             repeating = item
             break
@@ -108,7 +104,7 @@ def find_missing_repeating_2(arr: list) -> Optional[tuple[int, int]]:
     missing = None
 
     # Loop through the base array and find the missing item
-    for item in range(1, len(arr) + 1): # n
+    for item in range(1, len(arr) + 1):  # n
         if item not in unique_arr:
             missing = item
             break
@@ -120,11 +116,12 @@ def find_missing_repeating_2(arr: list) -> Optional[tuple[int, int]]:
 
     return missing, repeating
 
+
 #! ====================================================================================================================================================================
 
 # Example
-arr = [3, 1, 3]
-result = find_missing_repeating_2(arr)
+arr = [1, 2, 3, 4, 5]
+result = find_missing_repeating_1(arr)
 
 if result:
     print(result)
