@@ -61,6 +61,3 @@ def count_1s_2nd(arr: list) -> int:
             right = mid - 1
 
     return last_one_index + 1
-
-
-
