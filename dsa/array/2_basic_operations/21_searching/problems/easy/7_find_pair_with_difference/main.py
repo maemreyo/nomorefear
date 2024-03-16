@@ -21,10 +21,13 @@
         =>> Approach 2: (Using SORTED ARRAY to find the element which it plus with n equal to elements in the array)
             -> Sorted the array
             -> Initialize two pointers (left and right), and then do the BINARY SEARCH
+            -> For each element num in the array, perform a binary search to find if there exists an element num + n or num - n.
+                -> If such an element is found, return True. Otherwise, return False.
+            -> Besides, we need to handle the redundant result (explained in the following code)
 
         🚀 Complexities:
-            ⌛ Time complexity: O(log n) + tcomp of sorting method
-            🌌 Space complexity: O()
+            ⌛ Time complexity: O(n*log(n)) (sorting) + 2 * O(log(n)) (binary search) + O(n) (for loop) + O(1) (add an element to the set) + O(1) (add an element to the result list) ==>> O(n*log(n))
+            🌌 Space complexity: O(n) (sorting) + O(1) (binary search) + O(n) (set) + O(min(n^2, m)) (result list) ==>> O(n)
 
 ! ==============================================================================================================
 
@@ -33,7 +36,7 @@
 
 from typing import List, Optional
 
-
+# ! Approach 1
 def find_pair_with_difference_1st(arr: list, n: int) -> Optional[List[tuple[int, int]]]:
     # Check if the array is valid
     if len(arr) < 2:
@@ -54,5 +57,64 @@ def find_pair_with_difference_1st(arr: list, n: int) -> Optional[List[tuple[int,
         return None
 
     return ans
+
+
+# ! Approach 2
+def find_pair_with_difference_2nd(arr: list, n: int) -> Optional[List[tuple[int, int]]]:
+    # Check if the array is valid
+    if len(arr) < 2:
+        return None
+
+    # Sort the array (might be improved in the future when I have a better knowledge of SORTING techniques)
+    arr.sort() # O(n*log n)
+
+    # Initialize a list to store pairs
+    pairs = []
+
+    # Initialize a new set to store the visited numbers when we found a pair that matches the requirement
+    visited = set()
+
+    """
+    Explain why we add the num and num - n to the visited set
+
+        Suppose we have an array [1, 4, 5, 8] and n = 3.
+
+        When we iterate through the array, we first encounter 1. We find that 4 (i.e., num + n) is present in the array, so we add (1, 4) to the result list.
+        Now, we add 1 to the visited set.
+
+        Next, we encounter 4. We find that 1 (i.e., num - n) is present in the array.
+        However, since 1 is already in the visited set, we skip adding (4, 1) to the result list. Now, we add 4 to the visited set.
+
+        We move on to 5. We find that neither 2 (i.e., num - n) nor 8 (i.e., num + n) is present in the array, so we don't add any pair to the result list.
+
+        Finally, we encounter 8. We find that 5 (i.e., num - n) is present in the array, but since 5 is already in the visited set, we skip adding (8, 5) to the result list.
+    """
+    for num in arr: # => O(n)
+        if binary_search(arr, num + n) and num not in visited: # => O(log(n))
+            pairs.append((num, num + n))
+            visited.add(num)
+
+        if binary_search(arr, num - n) and num - n not in visited: # => O(log(n))
+            pairs.append((num, num - n))
+            visited.add(num - n)
+
+    return pairs
+
+def binary_search(arr: List[int], target: int ) -> bool:
+    left, right = 0, len(arr) - 1
+
+    while left <= right:
+        mid = (left + right) // 2
+
+        if arr[mid] == target:
+            return True
+        elif arr[mid] < target:
+            left += 1
+        else:
+            right -= 1
+
+    return False
+
+# ! Approach 3
 
 find_pair_with_difference_1st([4, 2, 6, 8, 1], 2)
