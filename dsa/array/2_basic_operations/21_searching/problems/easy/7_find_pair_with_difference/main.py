@@ -30,6 +30,14 @@
             🌌 Space complexity: O(n) (sorting) + O(1) (binary search) + O(n) (set) + O(min(n^2, m)) (result list) ==>> O(n)
 
 ! ==============================================================================================================
+        =>> Approach 3: (Using Hash Table)
+            -> Initialize an empty hash table
+            -> Traverse the array, use array elements as hash keys and enter them in the hash table
+            -> Traverse the array again, look for value n + arr[i] in the hash table
+
+        🚀 Complexities:
+            ⌛ Time complexity: O(n)
+            🌌 Space complexity: O(1)
 
 ====================================================================================================================================================================
 """
@@ -37,6 +45,7 @@
 from typing import List, Optional
 
 # ! Approach 1
+
 def find_pair_with_difference_1st(arr: list, n: int) -> Optional[List[tuple[int, int]]]:
     # Check if the array is valid
     if len(arr) < 2:
@@ -58,8 +67,9 @@ def find_pair_with_difference_1st(arr: list, n: int) -> Optional[List[tuple[int,
 
     return ans
 
-
+# ! ==============================================================================================================
 # ! Approach 2
+
 def find_pair_with_difference_2nd(arr: list, n: int) -> Optional[List[tuple[int, int]]]:
     # Check if the array is valid
     if len(arr) < 2:
@@ -115,6 +125,30 @@ def binary_search(arr: List[int], target: int ) -> bool:
 
     return False
 
+# ! ==============================================================================================================
 # ! Approach 3
+
+def find_pair_with_difference_3th(arr: List[int], n: int):
+    mapping = {}
+
+    for i in range(len(arr)):
+        if arr[i] in mapping.keys():
+            mapping[arr[i]] += 1
+
+            if n == 0 and mapping[arr[i]] > 1:
+                return True
+        else:
+            mapping[arr[i]] = 1
+
+    if n == 0:
+        return False
+
+    for i in range(len(arr)):
+        if n + arr[i] in mapping.keys():
+            print("Pair Found: (" + str(arr[i]) + ", " + str(n + arr[i]) + ")")
+            return True
+
+    print("No Pair Found")
+    return False
 
 find_pair_with_difference_1st([4, 2, 6, 8, 1], 2)
