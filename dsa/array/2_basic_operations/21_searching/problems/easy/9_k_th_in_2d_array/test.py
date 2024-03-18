@@ -1,5 +1,5 @@
 import unittest
-from main import find_k_th_smallest_brute_force, find_k_th_smallest_binary_search
+from main import find_k_th_smallest_brute_force, find_k_th_smallest_binary_search, find_k_th_smallest_sorted_array
 
 
 class TestFindKthSmallest_BruteForce(unittest.TestCase):
@@ -86,6 +86,32 @@ class TestFindKthSmallest_BinarySearch(unittest.TestCase):
         k = 7
         expected_result = 30
         result = find_k_th_smallest_binary_search(arr, n, k)
+        self.assertEqual(expected_result, result)
+
+
+class TestFindKthSmallest_SortedArray(unittest.TestCase):
+    def test_find_k_th_smallest_basic(self):
+        arr = [[10, 20, 30, 40],
+               [15, 25, 35, 45],
+               [24, 29, 37, 48],
+               [32, 33, 39, 50]]
+
+        n = 4
+        k = 3
+        expected_result = 20
+        result = find_k_th_smallest_sorted_array(arr, n, k)
+        self.assertEqual(expected_result, result)
+
+    def test_find_k_th_smallest_k_greater_than_n(self):
+        arr = [[10, 20, 30, 40],
+               [15, 25, 35, 45],
+               [24, 29, 37, 48],
+               [32, 33, 39, 50]]
+
+        n = 4
+        k = 7
+        expected_result = 30
+        result = find_k_th_smallest_sorted_array(arr, n, k)
         self.assertEqual(expected_result, result)
 
 

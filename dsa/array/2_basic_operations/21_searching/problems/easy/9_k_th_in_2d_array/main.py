@@ -21,7 +21,8 @@
 
     🙌🏻 Approach:
         ! ==============================================================================================================
-        =>> Approach 1: (Using Brute Force)
+        =>> Approach 1:
+            ! Using BRUTE FORCE
             # * Why should we use Priority Queue here?
             # * For each element in the 2D array, it pushes the element onto the priority queue using heapq.heappush().
             # * This ensures that the smallest element encountered in the array is inserted into the priority queue,
@@ -35,7 +36,8 @@
             🌌 Space complexity: O(n^2)
 
         ! ==============================================================================================================
-        =>> Approach 2: (Using Binary Search)
+        =>> Approach 2:
+            ! Using BINARY SEARCH
             -> Determine the range to take advantage of BINARY SEARCH: a[0][0] -> a[n-1][n-1]
             -> While left (a[0][0]) < right (a[n-1][n-1])
                 >-> Calculate the middle point
@@ -46,18 +48,30 @@
                 >-> Return right
 
         🚀 Complexities:
-            ⌛ Time complexity: O()
-            🌌 Space complexity: O()
+            ⌛ Time complexity: O(log(max - min) * n)
+            🌌 Space complexity: O(1)
 
         ! ==============================================================================================================
+        =>> Approach 3:
+            ! Using ARRAY
+            -> Initialize a new array
+            -> Copy all the elements of the matrix into that array
+            -> Sort that array
+            -> Find the k_th smallest element
+
+        🚀 Complexities:
+            ⌛ Time complexity: O(n^2 * time complexity of sorting technique)
+            🌌 Space complexity: O(n*n)
 """
+# ! ==============================================================================================================
+# ! Approach 1
+
 import heapq
 from typing import List, TypeAlias
 
 IntMatrix = List[List[int]]
 
 
-# ! Approach 1
 def find_k_th_smallest_brute_force(arr: IntMatrix, n: int, k: int) -> int:
     pq = []
     for i in range(n):  # * O(n)
@@ -72,6 +86,7 @@ def find_k_th_smallest_brute_force(arr: IntMatrix, n: int, k: int) -> int:
     return -1
 
 
+# ! ==============================================================================================================
 # ! Approach 2
 def find_k_th_smallest_binary_search(matrix: IntMatrix, n: int, k: int) -> int:
     left, right = matrix[0][0], matrix[n - 1][n - 1]
@@ -97,3 +112,18 @@ def count_less_equal(matrix: IntMatrix, target: int) -> int:
         else:
             i -= 1  # Move to the previous row
     return count
+
+
+# ! ==============================================================================================================
+# ! Approach 3
+def find_k_th_smallest_sorted_array(matrix: IntMatrix, n: int, k: int) -> int:
+    arr = [0 for z in range(n * n)]
+    idx = 0
+
+    for i in range(n):
+        for j in range(n):
+            arr[idx] = matrix[i][j]
+            idx += 1
+
+    arr.sort()
+    return arr[k - 1]
