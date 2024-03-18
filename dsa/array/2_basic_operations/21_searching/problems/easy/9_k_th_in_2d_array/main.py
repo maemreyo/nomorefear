@@ -35,8 +35,15 @@
             🌌 Space complexity: O(n^2)
 
         ! ==============================================================================================================
-        =>> Approach 2:
-
+        =>> Approach 2: (Using Binary Search)
+            -> Determine the range to take advantage of BINARY SEARCH: a[0][0] -> a[n-1][n-1]
+            -> While left (a[0][0]) < right (a[n-1][n-1])
+                >-> Calculate the middle point
+                >-> Count the number which less than or equal to the middle point
+                >-> Compare the count with k, if count < k
+                    >-> If so, continue searching for the right side
+                    >-> If not, continue searching for the left side
+                >-> Return right
 
         🚀 Complexities:
             ⌛ Time complexity: O()
@@ -45,11 +52,13 @@
         ! ==============================================================================================================
 """
 import heapq
-from typing import List
+from typing import List, TypeAlias
+
+IntMatrix = List[List[int]]
 
 
 # ! Approach 1
-def find_k_th_smallest(arr: List[List[int]], n: int, k: int) -> int:
+def find_k_th_smallest_brute_force(arr: IntMatrix, n: int, k: int) -> int:
     pq = []
     for i in range(n):  # * O(n)
         for j in range(n):  # * O(n)
@@ -61,3 +70,30 @@ def find_k_th_smallest(arr: List[List[int]], n: int, k: int) -> int:
         if counter == k:
             return temp
     return -1
+
+
+# ! Approach 2
+def find_k_th_smallest_binary_search(matrix: IntMatrix, n: int, k: int) -> int:
+    left, right = matrix[0][0], matrix[n - 1][n - 1]
+
+    while left < right:
+        mid = left + (right - left) // 2
+        count = count_less_equal(matrix, mid)
+        if count < k:
+            left = mid + 1
+        else:
+            right = mid
+    return left
+
+
+def count_less_equal(matrix: IntMatrix, target: int) -> int:
+    count = 0
+    n = len(matrix)
+    i, j = n - 1, 0  # Start from the bottom-left corner
+    while i >= 0 and j < n:
+        if matrix[i][j] <= target:
+            count += i + 1  # Count all elements in the current column
+            j += 1  # Move to the next column
+        else:
+            i -= 1  # Move to the previous row
+    return count
