@@ -66,7 +66,7 @@ def find_k_est_2nd(arr: List[int], k: int) -> int:
     left, right = min(arr), max(arr)  # O(n)
     if k == len(arr):
         return left
-    
+
     while left < right:  # O(log(m)) where m is the range from min to max
         mid = left + (right - left) // 2
         count = count_larger_or_equal(arr, mid)  # O(n)
