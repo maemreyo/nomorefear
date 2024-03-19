@@ -41,6 +41,20 @@
         🚀 Complexities:
             ⌛ Time complexity: 0(min(n, m) + min(min(n, m), k))
             🌌 Space complexity: O(min(min(n, m), k))
+
+        ! ==============================================================================================================
+        * Approach 3
+            ! Finding the intersection of all arrays
+            -> Initialize three pointers, pointing to the first element of three arrays
+            -> While all arrays didn't reach the last element
+                >-> If all elements at pointers are equal, increase all pointers 1 unit
+                >-> If x < y -> increase i
+                >-> If y < z -> increase j
+                >-> Else: increment k because when reaching this step, we already have x > y and z < y, then z is smallest
+
+        🚀 Complexities:
+            ⌛ Time complexity: 0(min(n, m, k))
+            🌌 Space complexity: O(min(n, m, k))
 """
 
 
@@ -61,6 +75,7 @@ def find_common_in_sorted_arrays__naive(arr1: list[int], arr2: list[int], arr3: 
     return ans
 
 
+# ! ==============================================================================================================
 # ! Approach 2
 def find_common_in_sorted_arrays__intersection_pair(arr1: list[int], arr2: list[int], arr3: list[int]) -> list[int]:
     n = len(arr1)
@@ -91,5 +106,36 @@ def find_intersection(arr1: list[int], arr2: list[int]) -> list[int]:
             ans.append(arr1[i])
             i += 1
             j += 1
+
+    return ans
+
+
+# ! ==============================================================================================================
+# ! Approach 3
+def find_common_in_sorted_arrays__intersection_full(arr1: list[int], arr2: list[int], arr3: list[int]) -> list[int]:
+    n = len(arr1)
+    m = len(arr2)
+    k = len(arr3)
+
+    i, j, z = 0, 0, 0
+    ans = []
+
+    # While we didn't reach the end of arrays
+    while i < n and j < m and z < k:
+        # If all elements at pointers are equal, we move forward to find another element that meets the requirement
+        if arr1[i] == arr2[j] and arr2[j] == arr3[z]:
+            ans.append(arr1[i])
+            i += 1
+            j += 1
+            z += 1
+        # x , y
+        elif arr1[i] < arr2[j]:
+            i += 1
+        # y < z
+        elif arr2[j] < arr3[z]:
+            j += 1
+        # When reaching this step, we already have x > y and z < y, then z is smallest
+        else:
+            z += 1
 
     return ans
