@@ -28,12 +28,14 @@
         ! ==============================================================================================================
 
         * Approach 2:
-            ! Using
-
+            ! Using BINARY SEARCH
+            -> If the element at the mid index is less than x, we move to the right half of the array.
+            -> If it is greater than or equal to x, we move to the left half.
+            -> We update the ceiling whenever we find an element greater than or equal to x.
 
         🚀 Complexities:
-            ⌛ Time complexity: O()
-            🌌 Space complexity: O()
+            ⌛ Time complexity: O(log(n))
+            🌌 Space complexity: O(1)
 """
 
 
@@ -45,7 +47,7 @@ def find_ceiling__linear_search(arr, x, low, high) -> int:
         return 0
 
     # Else linearly search for an index i such that x lies between arr[i] and arr[i+1]
-    for i in range(high):
+    for i in range(high):  # * O(n)
         if arr[i] == x:
             return i
 
@@ -53,3 +55,20 @@ def find_ceiling__linear_search(arr, x, low, high) -> int:
             return i + 1
 
     return -1
+
+
+# ! ==============================================================================================================
+# ! Approach 2
+def find_ceiling__binary_search(arr, x, low, high) -> int:
+    ceiling = -1  # Initialize the ceiling to an invalid value
+
+    while low <= high:  # * O(log(n))
+        mid = low + (high - low) // 2
+
+        if arr[mid] >= x:
+            ceiling = mid
+            high = mid - 1  # Move to the left half to search for a smaller ceiling
+        else:
+            low = mid + 1  # Move to the right half
+
+    return ceiling
