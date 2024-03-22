@@ -1,7 +1,7 @@
 import unittest
 from using_extra_array import reverse__extra_array
 from using_builtin_methods import reverse__builtin
-
+from using_recursion import reverse__recursion
 
 class TestReverseInplace(unittest.TestCase):
     def test_reverse_using_an_extra_array(self):
@@ -14,6 +14,12 @@ class TestReverseInplace(unittest.TestCase):
         arr = [5, 6, 7, 8, 9, 10, 11]
         expected = [11, 10, 9, 8, 7, 6, 5]
         reversed_arr = reverse__builtin(arr)
+        self.assertEqual(expected, reversed_arr)
+
+    def test_reverse_using_recursion(self):
+        arr = [5, 6, 7, 8, 9, 10, 11]
+        expected = [11, 10, 9, 8, 7, 6, 5]
+        reversed_arr = reverse__recursion(arr)
         self.assertEqual(expected, reversed_arr)
 
 
