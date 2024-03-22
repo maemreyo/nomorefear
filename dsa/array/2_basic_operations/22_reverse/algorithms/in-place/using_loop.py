@@ -1,6 +1,7 @@
 """
     ❓ Question:
         =>> Given an array (or string), the task is to reverse the array/string.
+        Note: for strings as input, we simply convert that string to the array using `list(string)`
 
     🙌🏻 Approach:
         ! Using LOOP (IN_PLACE)
@@ -18,7 +19,7 @@
 
 
 # ! ==============================================================================================================
-def reverse_array__loop(arr: list) -> list:
+def reverse__loop(arr: list) -> list:
     # Initialize two pointers at start and end of the array
     left, right = 0, len(arr) - 1
 
