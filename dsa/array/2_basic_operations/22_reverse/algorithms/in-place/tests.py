@@ -7,7 +7,8 @@ class TestReverseInplace(unittest.TestCase):
     def test_reverse_using_loop(self):
         arr = [1, 2, 3, 4]
         expected = [4, 3, 2, 1]
-        self.assertEqual(reverse__loop(arr), expected)
+        reverse__loop(arr)
+        self.assertEqual(expected, arr)
 
     def test_reverse_using_recursion(self):
         arr = [1, 2, 3, 4]

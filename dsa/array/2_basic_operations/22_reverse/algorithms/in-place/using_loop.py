@@ -31,5 +31,3 @@ def reverse__loop(arr: list) -> list:
         # Move pointers forward
         left += 1
         right -= 1
-
-    return arr
