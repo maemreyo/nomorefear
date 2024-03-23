@@ -56,12 +56,14 @@
     => Does not work with large datasets
     => Does not preserve the relative order of items with equal keys which means it is not stable.
 
-    @Frequently asked questions
-    1. Is Selection Sort Algorithm stable?
+    @FAQs
+    ! =========================
+    🙋 Is Selection Sort Algorithm stable?
     -> The default implementation of the Selection Sort Algorithm is not stable. Because it Does not preserve the
     relative order of items with equal keys which means it is not stable.
 
-    2. Is Selection Sort Algorithm in-place?
+    ! =========================
+    🙋 Is Selection Sort Algorithm in-place?
     -> Yes, Selection Sort Algorithm is in-place and it does not require extra space.
 
     ! =================================================================================================================

@@ -55,17 +55,18 @@
     relative order of elements in the input dataset => Limit the efficiency of the algorithm in certain cases.
 
     @FAQs
-    1. What is the Boundary Case for Bubble Sort?
+    ! =========================
+    🙋 What is the Boundary Case for Bubble Sort?
     ==> Bubble Sort takes minimum time (Order of n) when elements are already sorted. Hence it is best to check if the
     array is already sorted or not beforehand, to avoid O(n^2) time complexity.
 
     ! =========================
-    2. Does sorting happen in-place in Bubble Sort?
+    🙋 Does sorting happen in-place in Bubble Sort?
     ==> Yes, Bubble Sort performs the swapping of adjacent pairs without the use of any major data structure. Hence it
     is an in-place algorithm
 
     ! =========================
-    3. Is the Bubble Sort algorithm stable?
+    🙋 Is the Bubble Sort algorithm stable?
     ==> Yes, it is stable.
     A sorting algorithm is considered stable if it preserves the relative order of equal elements in the input array. In
     other words, if two elements have the same value and the first one appears before the second one in the input array,
@@ -80,7 +81,7 @@
     the bubble sort algorithm.
 
     ! =========================
-    4. Where is the Bubble Sort algorithm used?
+    🙋 Where is the Bubble Sort algorithm used?
     ==> Due to its simplicity, bubble sort is often used to introduce the concept of a sorting algorithm. In computer
     graphic, it is popular for its capabilities to detect a tiny error (like a swap of just two elements) in
     sorted-arrays and fix it with just linear complexity (2n).
