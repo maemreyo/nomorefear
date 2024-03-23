@@ -63,7 +63,11 @@
 
     2. Is Selection Sort Algorithm in-place?
     -> Yes, Selection Sort Algorithm is in-place and it does not require extra space.
-    
+
+    ! =================================================================================================================
+    |🖇️ REFERENCES
+    => geeksforgeeks: https://www.geeksforgeeks.org/selection-sort/
+
 """
 # ! ===================================================================================================================
 import unittest
