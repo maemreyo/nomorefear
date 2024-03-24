@@ -1,9 +1,9 @@
 ## TODOs
-- [ ] Selection Sort
-- [ ] Bubble Sort
-- [ ] Insertion Sort
-- [ ] Merge Sort
-- [ ] Quick Sort
+- [x] Selection Sort
+- [x] Bubble Sort
+- [x] Insertion Sort
+- [x] Merge Sort
+- [x] Quick Sort
 - [ ] Heap Sort
 - [ ] Counting Sort
 - [ ] Radix Sort
