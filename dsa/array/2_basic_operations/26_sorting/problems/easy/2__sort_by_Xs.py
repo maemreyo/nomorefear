@@ -1,10 +1,15 @@
 """
     |❓ PROBLEM
-        =>>
+        =>> Given an array A[] consisting of only 0s, 1s, and 2s. The task is to write a function that sorts the given
+        array. The functions should put all 0s first, then all 1s and all 2s in last.
 
     ! =================================================================================================================
     |🗳️ EXAMPLE
+        Input: [0, 1, 2, 0, 1, 2]
+        Output: [0, 0, 1, 1, 2, 2]
 
+        Input: [0, 1, 1, 0, 1, 2, 1, 2, 0, 0, 0, 1]
+        Output: [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2]
 
     ! =================================================================================================================
     |🙌🏻 APPROACHES
@@ -24,6 +29,11 @@
         |🚀 COMPLEXITIES:
             ⌛ Time complexity: O()
             🌌 Space complexity: O()
+
+    ! =================================================================================================================
+    |🖇️ REFERENCES
+    + Problem: https://www.geeksforgeeks.org/sort-an-array-of-0s-1s-and-2s/?ref=lbp
+    + Dutch National Flag problem: https://en.wikipedia.org/wiki/Dutch_national_flag_problem
 
 """
 # ! ===================================================================================================================
