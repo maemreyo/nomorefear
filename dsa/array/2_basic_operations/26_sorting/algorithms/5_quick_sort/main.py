@@ -70,6 +70,7 @@
     ! =================================================================================================================
     |🚀 COMPLEXITIES:
         ⌛ Time complexity:
+            -> Best case: O(n*log(n))
             -> Average case: O(n*log(n))
             -> Worst case: O(n^2)
         🌌 Space complexity:
@@ -78,22 +79,69 @@
 
     ! =================================================================================================================
     |📌 NOTE
-    @xxx
-    =>
+    @Advantages
+    => It is a divide-and-conquer algorithm that makes it easier to solve problems.
+    => It is efficient on large data sets.
+    => It has a low overhead, as it only requires a small amount of memory to function.
+
+    @Disadvantages
+    => It has a worst-case time complexity of O(N2), which occurs when the pivot is chosen poorly.
+    => It is not a good choice for small data sets.
+    => It is not a stable sort, meaning that if two elements have the same key, their relative order will not be preserved in
+    the sorted output in case of quick sort, because here we are swapping elements according to the pivot’s position (without considering their original positions).
 
     ! =================================================================================================================
     |👀 FAQs
     ! =========================
-    Q. xxx
-    ->
+    Q. What are the Boundary Cases of the Quick Sort Algorithm?
+    -> Quick Sort takes the maximum time to sort if the chosen pivot divides the array into extremely unbalanced
+    partitions, such as the smallest or largest element as the pivot.
+    -> It takes minimum time O(n) when the chosen pivot consistently divides the array into roughly equal-sized
+    partitions.
 
     ! =========================
-    Q. xxx
-    ->
+    Q. What is the Algorithmic Paradigm of the Quick Sort Algorithm?
+    -> The Quick Sort Algorithm follows "Divide and Conquer" paradigm
+
+    ! =========================
+    Q. Is Quick Sort Algorithm an in-place sorting algorithm?
+    -> Yes, the Quick Sort algorithm is typically implemented as an in-place sorting algorithm.
+
+    ! =========================
+    Q. Is Quick Sort Algorithm a stable algorithm?
+    -> No, the Quick Sort algorithm is not stable.
+        Quick Sort, however, does not guarantee stability. During the partitioning process, Quick Sort may reorder equal
+    elements (those with the same value) arbitrarily, depending on the choice of pivot and the partitioning logic. As a
+    result, the relative order of equal elements in the input array may not be preserved in the sorted output.
+
+    ! =========================
+    Q. When is the Quick Sort Algorithm used?
+    -> It is commonly used in various scenarios where efficient sorting of large arrays is required:
+        -> General sorting for large datasets
+            Quick Sort is one of the most efficient general-purpose sorting algorithms, particularly for large arrays.
+            Its average-case time complexity of O(n log n) makes it suitable for sorting large datasets quickly.
+        -> Applications requiring in-place sorting
+            Quick Sort's ability to perform sorting in place, with a relatively small amount of additional memory,
+            makes it well-suited for applications with limited memory resources.
+        -> Implementing libraries and frameworks
+            Quick Sort is often used as the default sorting algorithm in libraries and frameworks due to its efficiency
+            and versatility. Many programming languages and standard libraries include Quick Sort implementations for
+            sorting arrays and collections.
+        -> Real-time systems
+            In applications requiring fast response times and low latency, such as real-time data processing and
+            embedded systems, Quick Sort's efficient average-case performance can be advantageous.
+        -> Parallel processing
+            Quick Sort can be parallelized effectively, allowing multiple processors or threads to sort different parts
+            of the array concurrently. This parallelization can lead to significant performance gains on multi-core
+            processors or distributed systems.
+        -> Educational Purposes
+            Quick Sort is frequently taught in computer science courses and textbooks due to its elegance, simplicity,
+            and importance in understanding fundamental sorting algorithms and principles of algorithm design.
 
     ! =================================================================================================================
     |🖇️ REFERENCES
-    + https://www.youtube.com/watch?v=7h1s2SojIRw&ab_channel=AbdulBari
+    + QuickSort Algorithm by Abdul Bari: https://www.youtube.com/watch?v=7h1s2SojIRw&ab_channel=AbdulBari
+    + Geeksforgeeks: https://www.geeksforgeeks.org/quick-sort/
 
 """
 # ! ===================================================================================================================
