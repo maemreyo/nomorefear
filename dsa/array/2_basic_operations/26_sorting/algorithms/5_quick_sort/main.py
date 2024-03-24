@@ -93,51 +93,67 @@
 
     ! =================================================================================================================
     |🖇️ REFERENCES
-
+    + https://www.youtube.com/watch?v=7h1s2SojIRw&ab_channel=AbdulBari
 
 """
 # ! ===================================================================================================================
 import unittest
 
 
-def quick_sort(arr: list) -> list:
+def quick_sort(arr):
     # Helper function to perform the partitioning
     def partition(arr, low, high):
-        # Choose the pivot element
-        pivot = arr[high]
-        i = low - 1
+        # Choose the pivot element (the first element)
+        pivot = arr[low]
+        i = low + 1
+        j = high
 
-        # Partition the array around the pivot
-        for j in range(low, high):
-            if arr[j] < pivot:
+        while True:
+            # Move the left pointer to the right until finding an element greater than the pivot
+            while i <= j and arr[i] <= pivot:
                 i += 1
-                arr[i], arr[j] = arr[j], arr[i]  # Swap elements
 
-        # Place the pivot element in its correct position
-        arr[i + 1], arr[high] = arr[high], arr[i + 1]
+            # Move the right pointer to the left until finding an element smaller than the pivot
+            while j >= i and arr[j] >= pivot:
+                j -= 1
 
-        return i + 1
+            # If the pointers have crossed, break the loop
+            if i > j:
+                break
+
+            # Swap the elements at the left and right pointers
+            arr[i], arr[j] = arr[j], arr[i]
+            i += 1
+            j -= 1
+
+        # Swap the pivot with the element at the right pointer's position
+        arr[low], arr[j] = arr[j], arr[low]
+
+        # Return the index of the pivot element
+        return j
 
     # Recursive function to perform the quick sort
-    def recursive(arr, low, high):
+    def quick_sort_recursive(arr, low, high):
         if low < high:
             # Partition the array and get the pivot index
             pivot_index = partition(arr, low, high)
 
             # Recursively sort the sub-arrays on the left and right of the pivot
-            recursive(arr, low, pivot_index - 1)
-            recursive(arr, pivot_index + 1, high)
+            quick_sort_recursive(arr, low, pivot_index - 1)
+            quick_sort_recursive(arr, pivot_index + 1, high)
 
-    recursive(arr, 0, len(arr) - 1)
+    # Call the recursive function with the initial low and high indices
+    quick_sort_recursive(arr, 0, len(arr) - 1)
 
 
 class TestSuite(unittest.TestCase):
     def test_sorting_an_array(self):
         arr = [1, 4, 3, 2, 0]
         expected = [0, 1, 2, 3, 4]
-        actual = quick_sort(arr)
 
-        self.assertEqual(expected, actual)
+        quick_sort(arr)
+
+        self.assertEqual(expected, arr)
 
 
 if __name__ == '__main__':
