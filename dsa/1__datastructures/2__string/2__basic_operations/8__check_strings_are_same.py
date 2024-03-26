@@ -20,21 +20,23 @@
     |🙌🏻 APPROACHES
         @Approach 1:
             ! Using BRUTE FORCE
-
-
-        |🚀 COMPLEXITIES:
-            ⌛ Time complexity: O()
-            🌌 Space complexity: O()
+            -> Using some operators like: is (in Python), == (in Javascript)
+            -> Using some not equal operators
 
         ! =============================================================================================================
         @Approach 2:
-            ! Using
+            ! Using TWO POINTERS
+            -> Check if the length of two strings is equal or not
+            -> If equal, we start using two pointers
+                -> Increase two pointers by 1
+                -> Check elements at each positions
+                    -> If not equal -> return false
+                    -> If two pointers reached to the end of each string -> return true
 
 
         |🚀 COMPLEXITIES:
-            ⌛ Time complexity: O()
-            🌌 Space complexity: O()
+            ⌛ Time complexity: O(N)
+            🌌 Space complexity: O(1)
 
 """
 # ! ===================================================================================================================
-# ! Approach 1
